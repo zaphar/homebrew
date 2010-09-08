@@ -54,6 +54,14 @@ end
 def install f
   show_summary_heading = false
 
+  if ARGV.include? '--m32'
+    ENV.m32
+  elsif ARGV.include? '--m64'
+    ENV.m64
+  elsif ARGV.include? '--universal_binary'
+    ENV.universal_binary
+  end
+  
   f.deps.uniq.each do |dep|
     dep = Formula.factory dep
     if dep.keg_only?
@@ -72,6 +80,7 @@ def install f
   build_time = nil
   begin
     f.brew do
+      
       if ARGV.flag? '--interactive'
         ohai "Entering interactive mode"
         puts "Type `exit' to return and finalize the installation"
