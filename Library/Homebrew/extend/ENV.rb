@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 module HomebrewEnvExtension
   # -w: keep signal to noise high
   SAFE_CFLAGS_FLAGS = "-w -pipe"
-
+  
+  # TODO(jwall): allow a flag file for common flags.
   def setup_build_environment
     # Clear CDPATH to avoid make issues that depend on changing directories
     delete('CDPATH')

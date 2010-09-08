@@ -110,6 +110,7 @@ class Formula
   def prefix
     validate_variable :name
     validate_variable :version
+    # TODO(jwall): prefix should also consider arch?
     HOMEBREW_CELLAR+@name+@version
   end
 
